@@ -450,6 +450,138 @@ textarea.note-ta:focus  { border-color: var(--secondary); }
 .legend-dot  { width: 8px; height: 8px; border-radius: 1px; }
 .legend-bar  { width: 24px; height: 3px; border-radius: 2px; }
 
+/* ── EMAIL MODAL ─────────────────────────────────────────────────────── */
+#email-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(13,12,10,0.6);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+}
+#email-modal-overlay.open { display: flex; }
+#email-modal {
+  background: var(--white);
+  border-radius: 3px;
+  width: 560px;
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 28px 28px 24px;
+}
+#email-modal h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 4px;
+  color: var(--primary);
+}
+#email-modal .email-brand {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+#email-subject-wrap {
+  margin-bottom: 12px;
+}
+#email-subject-label {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+#email-subject {
+  width: 100%;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--primary);
+  padding: 0 10px;
+  outline: none;
+  background: var(--off-white);
+}
+#email-body {
+  width: 100%;
+  min-height: 220px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: var(--primary);
+  padding: 10px 12px;
+  resize: vertical;
+  outline: none;
+  line-height: 1.6;
+}
+#email-body:focus, #email-subject:focus { border-color: var(--secondary); }
+.email-generating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
+  padding: 40px 0;
+  justify-content: center;
+}
+.email-spinner {
+  width: 14px; height: 14px;
+  border: 2px solid var(--border);
+  border-top-color: var(--secondary);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.email-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; }
+.btn-copy {
+  height: 34px;
+  padding: 0 18px;
+  border-radius: 2px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--secondary);
+  transition: background 0.15s;
+}
+.btn-copy:hover { background: var(--warm-gray); }
+.btn-copy.copied { color: var(--green); border-color: var(--green-bd); background: var(--green-bg); }
+.btn-regen {
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 2px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  transition: background 0.15s;
+}
+.btn-regen:hover { background: var(--warm-gray); color: var(--primary); }
+.btn-gen-email {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--secondary);
+  cursor: pointer;
+  margin-top: 5px;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.15s, border-color 0.15s;
+}
+.btn-gen-email:hover { background: var(--warm-gray); border-color: var(--mid-gray); }
+
 /* ── TOAST ───────────────────────────────────────────────────────────── */
 #toast {
   position: fixed;
@@ -599,6 +731,32 @@ textarea.note-ta:focus  { border-color: var(--secondary); }
     <div class="modal-actions">
       <button class="btn-cancel" onclick="closeModal()">Cancel</button>
       <button class="btn-save" onclick="addProspect()">Add Prospect</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── EMAIL MODAL ── -->
+<div id="email-modal-overlay" onclick="closeEmailModalOutside(event)">
+  <div id="email-modal">
+    <h2>Cold Outreach Email</h2>
+    <div class="email-brand" id="email-modal-brand"></div>
+    <div id="email-generating" class="email-generating" style="display:none">
+      <div class="email-spinner"></div> Generating personalized email…
+    </div>
+    <div id="email-content" style="display:none">
+      <div id="email-subject-wrap">
+        <div id="email-subject-label">Subject</div>
+        <input id="email-subject" type="text" readonly>
+      </div>
+      <textarea id="email-body" readonly></textarea>
+      <div class="email-actions">
+        <div style="display:flex;gap:8px">
+          <button class="btn-copy" id="btn-copy" onclick="copyEmail()">Copy Email</button>
+          <button class="btn-save" id="btn-gmail" onclick="openInGmail()" style="font-size:12px">Open in Gmail ↗</button>
+          <button class="btn-regen" onclick="regenEmail()">↻ Regenerate</button>
+        </div>
+        <button class="btn-cancel" onclick="closeEmailModal()">Close</button>
+      </div>
     </div>
   </div>
 </div>
@@ -860,6 +1018,7 @@ function rowHTML(p) {
     <td>
       <textarea class="note-ta" id="note-${p.id}" placeholder="Outreach notes, next step, timing…" onkeyup="queueNoteSave('${p.id}')">${p.note||''}</textarea>
       <div class="save-ind hidden" id="ind-${p.id}">Saved ✓</div>
+      <button class="btn-gen-email" onclick="openEmailModal('${p.id}')">✉ Generate Email</button>
     </td>
   </tr>`;
 }
@@ -978,6 +1137,124 @@ function showToast(msg) {
   t.textContent = msg;
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// EMAIL MODAL
+// ═══════════════════════════════════════════════════════════════════════
+let currentEmailProspect = null;
+
+function openEmailModal(id) {
+  const p = ALL.find(p => p.id === id);
+  if (!p) return;
+  currentEmailProspect = p;
+  document.getElementById('email-modal-brand').textContent = `${p.contact} · ${p.brand}`;
+  document.getElementById('email-generating').style.display = 'flex';
+  document.getElementById('email-content').style.display = 'none';
+  document.getElementById('email-modal-overlay').classList.add('open');
+  generateEmail(p);
+}
+
+function closeEmailModal() {
+  document.getElementById('email-modal-overlay').classList.remove('open');
+  currentEmailProspect = null;
+}
+
+function closeEmailModalOutside(e) {
+  if (e.target === document.getElementById('email-modal-overlay')) closeEmailModal();
+}
+
+function regenEmail() {
+  if (!currentEmailProspect) return;
+  document.getElementById('email-generating').style.display = 'flex';
+  document.getElementById('email-content').style.display = 'none';
+  generateEmail(currentEmailProspect);
+}
+
+async function generateEmail(p) {
+  const note = (p.note || '').trim();
+  const prompt = `You are writing a cold outreach email on behalf of FBJ Fulfillment, a boutique 3PL service run by Jack Archer.
+
+FBJ positioning:
+- Boutique 3PL — no scary minimums, no ticket queues, real people who pick up the phone
+- Plugs directly into Shopify — white-glove pick/pack/ship
+- East Coast distribution = 1–2 day ground to 60%+ of US population
+- Anti-ShipBob: wins on service, transparency, and flexibility — not scale
+- Sweet spot: Shopify brands shipping 1,000–10,000 orders/month, founder-led, self-fulfilling or frustrated with current 3PL
+- The pain point entry: ~30 orders/day is where self-fulfillment starts breaking down
+
+Prospect details:
+- Brand: ${p.brand} (${p.cat})
+- Contact: ${p.contact}, ${p.title}
+- Region: ${p.region}
+- Est. Revenue: ${p.rev}
+- Est. Orders/mo: ${p.orders}
+- Current 3PL: ${p.tpl}${p.tplN ? ' — ' + p.tplN : ''}
+- Outreach channel: ${p.channel}
+${note ? '- Notes: ' + note : ''}
+
+Write a short, punchy cold email (under 120 words body). Tone: founder-to-founder, warm but direct. Lead with their pain point, not our features. No fluff. End with a simple CTA for a 15-minute call.
+
+Respond in this exact format with no extra text:
+SUBJECT: [subject line here]
+BODY:
+[email body here]`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+    const data = await res.json();
+    const text = data.content[0].text.trim();
+    const subjectMatch = text.match(/SUBJECT:\s*(.+)/);
+    const bodyMatch = text.match(/BODY:\n([\s\S]+)/);
+    const subject = subjectMatch ? subjectMatch[1].trim() : `Fulfillment question for ${p.brand}`;
+    const body = bodyMatch ? bodyMatch[1].trim() : text;
+    document.getElementById('email-subject').value = subject;
+    document.getElementById('email-body').value = body;
+    document.getElementById('email-generating').style.display = 'none';
+    document.getElementById('email-content').style.display = 'block';
+    document.getElementById('btn-copy').textContent = 'Copy Email';
+    document.getElementById('btn-copy').classList.remove('copied');
+    // Update Open Gmail button
+    const gmailBtn = document.getElementById('btn-gmail');
+    if (gmailBtn) {
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      gmailBtn.onclick = () => window.open(gmailUrl, '_blank');
+    }
+  } catch(err) {
+    document.getElementById('email-body').value = 'Error generating email. Please try again.';
+    document.getElementById('email-generating').style.display = 'none';
+    document.getElementById('email-content').style.display = 'block';
+  }
+}
+
+function copyEmail() {
+  const subject = document.getElementById('email-subject').value;
+  const body = document.getElementById('email-body').value;
+  const full = `Subject: ${subject}\n\n${body}`;
+  navigator.clipboard.writeText(full).then(() => {
+    const btn = document.getElementById('btn-copy');
+    btn.textContent = 'Copied ✓';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copy Email';
+      btn.classList.remove('copied');
+    }, 2500);
+  });
+}
+
+function openInGmail() {
+  const subject = document.getElementById('email-subject').value;
+  const body = document.getElementById('email-body').value;
+  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.open(gmailUrl, '_blank');
 }
 
 // ═══════════════════════════════════════════════════════════════════════
