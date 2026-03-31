@@ -769,7 +769,7 @@ textarea.note-ta:focus  { border-color: var(--secondary); }
 // CONFIG — paste your deployed Apps Script URL here to enable sync
 // Leave as empty string to run in local-only mode
 // ═══════════════════════════════════════════════════════════════════════
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyvtnb5bu8iYB3e6P3ZkrPm9PcRJ45eJlhI_hp91WiDd-JyEuO6igDkxPljOK8CkF0icQ/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwx2y3XhTI5xkK52AJLmJy7c4nlknRYAmNipgLK32hY4eUrtca3MNnDA-WM9btiechO4Q/exec';
 
 // ═══════════════════════════════════════════════════════════════════════
 // SEED DATA (15 ICP-profiled prospects)
@@ -1201,17 +1201,12 @@ BODY:
 [email body here]`;
 
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await fetch(SCRIPT_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        messages: [{ role: 'user', content: prompt }]
-      })
+      body: JSON.stringify({ action: 'generateEmail', prompt })
     });
     const data = await res.json();
-    const text = data.content[0].text.trim();
+    const text = data.text.trim();
     const subjectMatch = text.match(/SUBJECT:\s*(.+)/);
     const bodyMatch = text.match(/BODY:\n([\s\S]+)/);
     const subject = subjectMatch ? subjectMatch[1].trim() : `Fulfillment question for ${p.brand}`;
