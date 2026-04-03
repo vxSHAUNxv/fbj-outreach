@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FBJ — Prospect Outreach</title>
+<title>Fulfilled by Jack — Prospect Outreach</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -605,7 +605,7 @@ textarea.note-ta:focus  { border-color: var(--secondary); }
 
 <!-- ── MASTHEAD ── -->
 <header id="masthead">
-  <h1>FBJ Fulfillment <span>Prospect Outreach</span></h1>
+  <h1>Fulfilled by Jack <span>Prospect Outreach</span></h1>
   <div class="masthead-right">
     <div class="conflict-legend"><span></span> ShipBob Conflict</div>
     <div class="sync-status">
@@ -775,21 +775,21 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwx2y3XhTI5xkK52AJLm
 // SEED DATA (15 ICP-profiled prospects)
 // ═══════════════════════════════════════════════════════════════════════
 const SEED = [
-  {id:"mack-weldon",brand:"Mack Weldon",cat:"Apparel & Accessories",contact:"Brian Berger",title:"Founder & CEO",li:"https://linkedin.com/in/brian-berger-7101aa/",liOk:true,region:"Coastal",rev:"$75M",orders:"~8,000/mo",platform:"Shopify",score:82,status:"New",channel:"LinkedIn",tpl:"In-house",tplN:"Own FCs in MA & CA",note:""},
-  {id:"vuori",brand:"Vuori Clothing",cat:"Apparel & Accessories",contact:"Joe Kudla",title:"Founder & CEO",li:"https://linkedin.com/in/joe-kudla-6551871/",liOk:true,region:"Coastal",rev:"$180M",orders:"~20,000/mo",platform:"Shopify",score:65,status:"New",channel:"LinkedIn",tpl:"In-house",tplN:"Own DC Tijuana + adding US DC",note:""},
-  {id:"girlfriend-collective",brand:"Girlfriend Collective",cat:"Apparel & Accessories",contact:"Ellie Dinh",title:"Co-Founder",li:"https://linkedin.com/search/results/people/?keywords=Ellie%20Dinh%20Girlfriend%20Collective",liOk:false,region:"Coastal",rev:"$40M",orders:"~4,500/mo",platform:"Shopify",score:87,status:"New",channel:"Email",tpl:"Unknown",tplN:"",note:""},
-  {id:"caraway",brand:"Caraway Home",cat:"DTC / Ecommerce",contact:"Jordan Nathan",title:"Founder & CEO",li:"https://linkedin.com/in/jordannathanprofile/",liOk:true,region:"Coastal",rev:"$55M",orders:"~5,000/mo",platform:"Shopify",score:85,status:"In Talks",channel:"Mixed",tpl:"Unknown",tplN:"",note:""},
-  {id:"cuts-clothing",brand:"Cuts Clothing",cat:"Apparel & Accessories",contact:"Steven Borrelli",title:"Founder & CEO",li:"https://linkedin.com/in/borrellisteven/",liOk:true,region:"Southwest",rev:"$60M",orders:"~6,000/mo",platform:"Shopify",score:78,status:"In Talks",channel:"LinkedIn",tpl:"Unknown",tplN:"",note:""},
-  {id:"pepper",brand:"Pepper",cat:"Apparel & Accessories",contact:"Jaclyn Fu",title:"Co-Founder & CEO",li:"https://linkedin.com/in/jaclynfu/",liOk:true,region:"Coastal",rev:"$20M",orders:"~2,000/mo",platform:"Shopify",score:90,status:"New",channel:"Email",tpl:"Unknown",tplN:"",note:""},
-  {id:"tracksmith",brand:"Tracksmith",cat:"Apparel & Accessories",contact:"Matt Taylor",title:"Founder & CEO",li:"https://linkedin.com/in/mtaylor33/",liOk:true,region:"Coastal",rev:"$30M",orders:"~3,000/mo",platform:"Shopify",score:89,status:"Contacted",channel:"Email",tpl:"Unknown",tplN:"",note:""},
-  {id:"outdoor-voices",brand:"Outdoor Voices",cat:"Apparel & Accessories",contact:"Pamela Catlett",title:"CEO",li:"https://linkedin.com/search/results/people/?keywords=Pamela%20Catlett%20Outdoor%20Voices",liOk:false,region:"Coastal",rev:"$50M",orders:"~5,000/mo",platform:"Shopify",score:84,status:"Contacted",channel:"Email",tpl:"Unknown",tplN:"",note:""},
-  {id:"buck-mason",brand:"Buck Mason",cat:"Apparel & Accessories",contact:"Sasha Koehn",title:"Co-Founder",li:"https://linkedin.com/in/sashakoehn/",liOk:true,region:"Coastal",rev:"$35M",orders:"~3,500/mo",platform:"Shopify",score:86,status:"New",channel:"LinkedIn",tpl:"Unknown",tplN:"",note:""},
-  {id:"madhappy",brand:"Madhappy",cat:"Apparel & Accessories",contact:"Peiman Raf",title:"Co-Founder",li:"https://linkedin.com/in/peiman-raf-43990143/",liOk:true,region:"Coastal",rev:"$25M",orders:"~2,500/mo",platform:"Shopify",score:88,status:"New",channel:"LinkedIn",tpl:"Unknown",tplN:"",note:""},
-  {id:"entireworld",brand:"Entireworld",cat:"DTC / Ecommerce",contact:"Scott Sternberg",title:"Founder",li:"https://linkedin.com/search/results/people/?keywords=Scott%20Sternberg%20Entireworld",liOk:false,region:"Coastal",rev:"$12M",orders:"~1,200/mo",platform:"Shopify",score:91,status:"New",channel:"Email",tpl:"Unknown",tplN:"",note:""},
-  {id:"italic",brand:"Italic",cat:"DTC / Ecommerce",contact:"Jeremy Cai",title:"Founder & CEO",li:"https://linkedin.com/in/jeremyhcai/",liOk:true,region:"Coastal",rev:"$15M",orders:"~1,500/mo",platform:"Shopify",score:90,status:"New",channel:"Email",tpl:"Unknown",tplN:"",note:""},
-  {id:"stio",brand:"Stio",cat:"Apparel & Accessories",contact:"Stephen Sullivan",title:"Founder & CEO",li:"https://linkedin.com/search/results/people/?keywords=Stephen%20Sullivan%20Stio",liOk:false,region:"Southwest",rev:"$22M",orders:"~2,200/mo",platform:"Shopify",score:74,status:"New",channel:"Email",tpl:"Unknown",tplN:"",note:""},
-  {id:"public-rec",brand:"Public Rec",cat:"Apparel & Accessories",contact:"Zach Goldstein",title:"Founder & CEO",li:"https://linkedin.com/in/zach-goldstein-b7002714/",liOk:true,region:"Midwest",rev:"$18M",orders:"~1,800/mo",platform:"Shopify",score:79,status:"New",channel:"LinkedIn",tpl:"Unknown",tplN:"",note:""},
-  {id:"chubbies",brand:"Chubbies Shorts",cat:"Apparel & Accessories",contact:"Kyle Hency",title:"Co-Founder & CEO",li:"https://linkedin.com/search/results/people/?keywords=Kyle%20Hency%20Chubbies",liOk:false,region:"Southwest",rev:"$45M",orders:"~4,500/mo",platform:"Shopify",score:68,status:"New",channel:"Community",tpl:"In-house",tplN:"Under Solo Brands — in-house",note:""}
+  {id:"mack-weldon",url:"https://mackweldon.com",brand:"Mack Weldon",cat:"Apparel & Accessories",contact:"Brian Berger",title:"Founder & CEO",li:"https://linkedin.com/in/brian-berger-7101aa/",liOk:true,region:"Coastal",rev:"$75M",orders:"~8,000/mo",platform:"Shopify",score:82,status:"New",channel:"LinkedIn",tpl:"In-house",tplN:"Own FCs in MA & CA",note:""},
+  {id:"vuori",url:"https://vuoriclothing.com",brand:"Vuori Clothing",cat:"Apparel & Accessories",contact:"Joe Kudla",title:"Founder & CEO",li:"https://linkedin.com/in/joe-kudla-6551871/",liOk:true,region:"Coastal",rev:"$180M",orders:"~20,000/mo",platform:"Shopify",score:65,status:"New",channel:"LinkedIn",tpl:"In-house",tplN:"Own DC Tijuana + adding US DC",note:""},
+  {id:"girlfriend-collective",url:"https://girlfriend.com",brand:"Girlfriend Collective",cat:"Apparel & Accessories",contact:"Ellie Dinh",title:"Co-Founder",li:"https://linkedin.com/search/results/people/?keywords=Ellie%20Dinh%20Girlfriend%20Collective",liOk:false,region:"Coastal",rev:"$40M",orders:"~4,500/mo",platform:"Shopify",score:87,status:"New",channel:"Email",tpl:"Unknown",tplN:"",note:""},
+  {id:"caraway",url:"https://carawayhome.com",brand:"Caraway Home",cat:"DTC / Ecommerce",contact:"Jordan Nathan",title:"Founder & CEO",li:"https://linkedin.com/in/jordannathanprofile/",liOk:true,region:"Coastal",rev:"$55M",orders:"~5,000/mo",platform:"Shopify",score:85,status:"In Talks",channel:"Mixed",tpl:"Unknown",tplN:"",note:""},
+  {id:"cuts-clothing",url:"https://cutsclothing.com",brand:"Cuts Clothing",cat:"Apparel & Accessories",contact:"Steven Borrelli",title:"Founder & CEO",li:"https://linkedin.com/in/borrellisteven/",liOk:true,region:"Southwest",rev:"$60M",orders:"~6,000/mo",platform:"Shopify",score:78,status:"In Talks",channel:"LinkedIn",tpl:"Unknown",tplN:"",note:""},
+  {id:"pepper",url:"https://wearpepper.com",brand:"Pepper",cat:"Apparel & Accessories",contact:"Jaclyn Fu",title:"Co-Founder & CEO",li:"https://linkedin.com/in/jaclynfu/",liOk:true,region:"Coastal",rev:"$20M",orders:"~2,000/mo",platform:"Shopify",score:90,status:"New",channel:"Email",tpl:"Unknown",tplN:"",note:""},
+  {id:"tracksmith",url:"https://tracksmith.com",brand:"Tracksmith",cat:"Apparel & Accessories",contact:"Matt Taylor",title:"Founder & CEO",li:"https://linkedin.com/in/mtaylor33/",liOk:true,region:"Coastal",rev:"$30M",orders:"~3,000/mo",platform:"Shopify",score:89,status:"Contacted",channel:"Email",tpl:"Unknown",tplN:"",note:""},
+  {id:"outdoor-voices",url:"https://outdoorvoices.com",brand:"Outdoor Voices",cat:"Apparel & Accessories",contact:"Pamela Catlett",title:"CEO",li:"https://linkedin.com/search/results/people/?keywords=Pamela%20Catlett%20Outdoor%20Voices",liOk:false,region:"Coastal",rev:"$50M",orders:"~5,000/mo",platform:"Shopify",score:84,status:"Contacted",channel:"Email",tpl:"Unknown",tplN:"",note:""},
+  {id:"buck-mason",url:"https://buckmason.com",brand:"Buck Mason",cat:"Apparel & Accessories",contact:"Sasha Koehn",title:"Co-Founder",li:"https://linkedin.com/in/sashakoehn/",liOk:true,region:"Coastal",rev:"$35M",orders:"~3,500/mo",platform:"Shopify",score:86,status:"New",channel:"LinkedIn",tpl:"Unknown",tplN:"",note:""},
+  {id:"madhappy",url:"https://madhappy.com",brand:"Madhappy",cat:"Apparel & Accessories",contact:"Peiman Raf",title:"Co-Founder",li:"https://linkedin.com/in/peiman-raf-43990143/",liOk:true,region:"Coastal",rev:"$25M",orders:"~2,500/mo",platform:"Shopify",score:88,status:"New",channel:"LinkedIn",tpl:"Unknown",tplN:"",note:""},
+  {id:"entireworld",url:"https://theentireworld.com",brand:"Entireworld",cat:"DTC / Ecommerce",contact:"Scott Sternberg",title:"Founder",li:"https://linkedin.com/search/results/people/?keywords=Scott%20Sternberg%20Entireworld",liOk:false,region:"Coastal",rev:"$12M",orders:"~1,200/mo",platform:"Shopify",score:91,status:"New",channel:"Email",tpl:"Unknown",tplN:"",note:""},
+  {id:"italic",url:"https://italic.com",brand:"Italic",cat:"DTC / Ecommerce",contact:"Jeremy Cai",title:"Founder & CEO",li:"https://linkedin.com/in/jeremyhcai/",liOk:true,region:"Coastal",rev:"$15M",orders:"~1,500/mo",platform:"Shopify",score:90,status:"New",channel:"Email",tpl:"Unknown",tplN:"",note:""},
+  {id:"stio",url:"https://stio.com",brand:"Stio",cat:"Apparel & Accessories",contact:"Stephen Sullivan",title:"Founder & CEO",li:"https://linkedin.com/search/results/people/?keywords=Stephen%20Sullivan%20Stio",liOk:false,region:"Southwest",rev:"$22M",orders:"~2,200/mo",platform:"Shopify",score:74,status:"New",channel:"Email",tpl:"Unknown",tplN:"",note:""},
+  {id:"public-rec",url:"https://public-rec.com",brand:"Public Rec",cat:"Apparel & Accessories",contact:"Zach Goldstein",title:"Founder & CEO",li:"https://linkedin.com/in/zach-goldstein-b7002714/",liOk:true,region:"Midwest",rev:"$18M",orders:"~1,800/mo",platform:"Shopify",score:79,status:"New",channel:"LinkedIn",tpl:"Unknown",tplN:"",note:""},
+  {id:"chubbies",url:"https://chubbiesshorts.com",brand:"Chubbies Shorts",cat:"Apparel & Accessories",contact:"Kyle Hency",title:"Co-Founder & CEO",li:"https://linkedin.com/search/results/people/?keywords=Kyle%20Hency%20Chubbies",liOk:false,region:"Southwest",rev:"$45M",orders:"~4,500/mo",platform:"Shopify",score:68,status:"New",channel:"Community",tpl:"In-house",tplN:"Under Solo Brands — in-house",note:""}
 ];
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -981,7 +981,7 @@ function rowHTML(p) {
 
   return `<tr class="${rowClass}" id="row-${p.id}">
     <td>
-      <div class="brand-name">${p.brand}</div>
+      <div class="brand-name">${p.url ? `<a href="${p.url}" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);" onmouseover="this.style.borderBottomColor='var(--primary)'" onmouseout="this.style.borderBottomColor='var(--border)'">${p.brand} ↗</a>` : p.brand}</div>
       <div class="brand-cat">${p.cat}</div>
     </td>
     <td>
